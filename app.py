@@ -191,44 +191,19 @@ cm_matrix = pd.DataFrame(data=cm, columns=['Actual Positive:1', 'Actual Negative
 
 sns.heatmap(cm_matrix, annot=True, fmt='d', cmap='YlGnBu')
 
-import joblib
+#import joblib
 
 # 1. حفظ الموديل (الـ Random Forest)
-joblib.dump(model_3, 'heart_model.pkl')
+#joblib.dump(model_3, 'heart_model.pkl')
 
 # 2. حفظ الـ Scaler (عشان الأرقام اللي المستخدم هيدخلها تتصغر بنفس الطريقة)
-joblib.dump(scaler, 'scaler.pkl')
+#joblib.dump(scaler, 'scaler.pkl')
 
 # 3. حفظ الـ Selector (عشان يختار الـ 8 أعمدة المهمين بس)
-joblib.dump(sel, 'selector.pkl')
+#joblib.dump(sel, 'selector.pkl')
 
 # 4. حفظ أسماء الأعمدة (عشان الترتيب ميبوظش في الـ app)
-joblib.dump(x.columns.tolist(), 'model_columns.pkl')
+#joblib.dump(x.columns.tolist(), 'model_columns.pkl')
 
-print("Done! Download these 4 files to use them in your app.py")
 
-# Commented out IPython magic to ensure Python compatibility.
-# %%writefile app.py
-# import streamlit as st
-# import pandas as pd
-# import joblib
-# 
-# # كود الـ Streamlit (استخدم الكود اللي بعتهولك في الرد اللي فات هنا)
-# # ... (نفس الكود الاحترافي اللي فيه معالجة الـ Categorical Data)
 
-# 1. أول حاجة لازم نتأكد إن ستريمليت متسطبة في الكولاب
-!pip install streamlit -q
-
-# 2. تثبيت localtunnel (عشان يدينا لينك خارجي)
-!npm install -g localtunnel
-
-# 3. تشغيل السيرفر في الخلفية باستخدام "بايثون" عشان يتفادى مشكلة الـ Path
-import subprocess
-# بنستخدم "python -m streamlit" عشان نضمن إن الكولاب يوصل للمكتبة
-with open("streamlit_log.txt", "w") as f:
-    subprocess.Popen(["python", "-m", "streamlit", "run", "app.py"], stdout=f, stderr=f)
-
-# 4. فتح النفق (Tunnel)
-# ملحوظة: لما تفتح اللينك اللي هيطلع، هيطلب منك IP Address..
-# اكتب فيه الـ IP بتاع الكولاب (هقولك تجيبه إزاي تحت)
-!npx localtunnel --port 8501
