@@ -15,7 +15,7 @@ def load_assets():
 model, scaler, selector, model_columns = load_assets()
 
 # --- 2. UI DESIGN ---
-st.title("Heart Failure Prediction App ❤️")
+st.title("Heart Failure Prediction App")
 st.write("Enter patient data to predict heart disease risk.")
 
 # --- 3. USER INPUTS ---
@@ -73,4 +73,4 @@ if st.button("Predict Result"):
     if prediction[0] == 1:
         st.error("⚠️ Warning: High Risk of Heart Disease")
     else:
-        st.success("✅ Good News: Low Risk of Heart Disease")
+        st.success("Good News: Low Risk of Heart Disease")
